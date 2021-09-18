@@ -44,4 +44,7 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
-        run: vendor/bin/pest
+        run: composer run-script test
+
+      - name: Execute tests coverage
+        run: composer run-script test-coverage
