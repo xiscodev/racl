@@ -4,7 +4,7 @@ namespace Xiscodev\Racl\Traits;
 
 use Xiscodev\Racl\Http\AsyncClient;
 
-trait Requester
+trait RaclRequester
 {
     /**
      * Send a request to any service

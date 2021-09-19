@@ -4,7 +4,7 @@ namespace Xiscodev\Racl\Traits;
 
 use Illuminate\Http\Response;
 
-trait Responser
+trait RaclResponser
 {
     /**
      * Build a success response
