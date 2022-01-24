@@ -27,14 +27,15 @@
     },
     "autoload": {
         "psr-4": {
-            "Xiscodev\\Racl\\": "src"
+            "Xiscodev\\Racl\\": "src/"
         }
     },
     "scripts": {
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "optimize-autoloader": true
     },
     "extra": {
         "laravel": {
