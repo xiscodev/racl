@@ -1,6 +1,7 @@
 {
     "name": "xiscodev/racl",
     "description": "Opinionated RESTful API client for Laravel or Lumen",
+    "type": "library",
     "keywords": [
         "xiscodev",
         "laravel",
@@ -43,7 +44,7 @@
                 "Xiscodev\\Racl\\RaclServiceProvider"
             ],
             "aliases": {
-                "Racl": "Xiscodev\\Racl\\RaclFacade"
+                "Racl": "Xiscodev\\Racl\\Facades\\RaclFacade"
             }
         }
     },

@@ -1,6 +1,6 @@
 <?php
 
-namespace Xiscodev\Racl\Traits;
+namespace Xiscodev\Racl\HttpResponser;
 
 use Illuminate\Http\Response;
 
