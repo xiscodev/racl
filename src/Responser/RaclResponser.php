@@ -1,26 +1,30 @@
 <?php
 
-namespace Xiscodev\Racl\HttpResponser;
+namespace Xiscodev\Racl\Responser;
 
 use Illuminate\Http\Response;
 
 trait RaclResponser
 {
     /**
-     * Build a success response
-     * @param  string|array $data
-     * @param  int $code
+     * Build a success response.
+     *
+     * @param array|string $data
+     * @param int          $code
+     *
      * @return Illuminate\Http\JsonResponse
      */
-    public function successResponse($data, $code = Response::HTTP_OK)
+    public static function successResponse($data, $code = Response::HTTP_OK)
     {
         return response()->json($data, $code);
     }
 
     /**
-     * Build error responses
-     * @param  string $message
-     * @param  int $code
+     * Build error responses.
+     *
+     * @param string $message
+     * @param int    $code
+     *
      * @return Illuminate\Http\JsonResponse
      */
     public function errorResponse($message, $code)
