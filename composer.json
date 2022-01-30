@@ -38,16 +38,6 @@
         "sort-packages": true,
         "optimize-autoloader": true
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Xiscodev\\Racl\\RaclServiceProvider"
-            ],
-            "aliases": {
-                "Racl": "Xiscodev\\Racl\\Facades\\RaclFacade"
-            }
-        }
-    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
