@@ -4,6 +4,9 @@ namespace Xiscodev\Racl\Responser;
 
 use Illuminate\Http\Response;
 
+/**
+ * Allows to manage http responses for rest.
+ */
 trait RaclResponser
 {
     /**

@@ -1,9 +1,12 @@
 <?php
 
-namespace Xiscodev\Racl\Http;
+namespace Xiscodev\Racl;
 
 use GuzzleHttp\Client as HttpClient;
 
+/**
+ * Represents a rest client for http requests.
+ */
 class AsyncHttpClient
 {
     /**

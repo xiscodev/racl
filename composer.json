@@ -30,12 +30,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Xiscodev\\Racl\\": "src"
+            "Xiscodev\\Racl\\Requester\\": "src/Requester/",
+            "Xiscodev\\Racl\\Responser\\": "src/Responser/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Xiscodev\\Racl\\Tests\\": "tests"
+            "Xiscodev\\Racl\\Tests\\": "tests/"
         }
     },
     "scripts": {

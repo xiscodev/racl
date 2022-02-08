@@ -1,9 +1,12 @@
 <?php
 
-namespace Xiscodev\Racl\Requester;
+namespace Xiscodev\Racl;
 
 use Xiscodev\Racl\Http\AsyncHttpClient;
 
+/**
+ * Allows to perform rest http requests.
+ */
 trait RaclRequester
 {
     /**
