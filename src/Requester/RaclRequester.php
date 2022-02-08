@@ -1,6 +1,6 @@
 <?php
 
-namespace Xiscodev\Racl;
+namespace Xiscodev\Racl\Requester;
 
 use Xiscodev\Racl\Http\AsyncHttpClient;
 
