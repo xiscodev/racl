@@ -10,6 +10,7 @@
     ],
     "homepage": "https://github.com/xiscodev/racl",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Jose Diaz",
@@ -20,11 +21,28 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "guzzlehttp/guzzle": "^7.3"
+        "guzzlehttp/guzzle": "^7.3",
+        "illuminate/http": "^v6.20.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {
-            "Xiscodev\\Racl\\": "src/"
+            "Xiscodev\\Racl\\": "src"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Xiscodev\\Racl\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Xiscodev\Racl;
+namespace Xiscodev\Racl\Http;
 
 use GuzzleHttp\Client as HttpClient;
 
@@ -12,7 +12,7 @@ class AsyncHttpClient
      *
      * @var string
      */
-    private $responseType;
+    private $_responseType;
 
     /**
      * Holds the fake response type, it is useful when you want to get the JSON
@@ -20,7 +20,7 @@ class AsyncHttpClient
      *
      * @var string
      */
-    private $fakeType;
+    private $_fakeType;
 
     /**
      * Constructor.
@@ -31,8 +31,8 @@ class AsyncHttpClient
         $responseType = 'json',
         HttpClient $httpClient = null
     ) {
-        $this->setHttpClient($httpClient);
-        $this->setResponseType($responseType);
+        $this->_setHttpClient($httpClient);
+        $this->_setResponseType($responseType);
     }
 
     /**
@@ -59,7 +59,7 @@ class AsyncHttpClient
             throw new \InvalidArgumentException($errorMessage);
         }
 
-        $response = $this->requestResource(
+        $response = $this->_requestResource(
             $actionPath,
             'GET',
             $params,
@@ -67,7 +67,7 @@ class AsyncHttpClient
             $cookies
         );
 
-        return $this->processHttpResponse($response);
+        return $this->_processHttpResponse($response);
     }
 
     /**
@@ -94,7 +94,7 @@ class AsyncHttpClient
             throw new \InvalidArgumentException($errorMessage);
         }
 
-        $response = $this->requestResource(
+        $response = $this->_requestResource(
             $actionPath,
             'PUT',
             $params,
@@ -102,7 +102,7 @@ class AsyncHttpClient
             $cookies
         );
 
-        return $this->processHttpResponse($response);
+        return $this->_processHttpResponse($response);
     }
 
     /**
@@ -129,7 +129,7 @@ class AsyncHttpClient
             throw new \InvalidArgumentException($errorMessage);
         }
 
-        $response = $this->requestResource(
+        $response = $this->_requestResource(
             $actionPath,
             'POST',
             $params,
@@ -137,7 +137,7 @@ class AsyncHttpClient
             $cookies
         );
 
-        return $this->processHttpResponse($response);
+        return $this->_processHttpResponse($response);
     }
 
     /**
@@ -164,7 +164,7 @@ class AsyncHttpClient
             throw new \InvalidArgumentException($errorMessage);
         }
 
-        $response = $this->requestResource(
+        $response = $this->_requestResource(
             $actionPath,
             'DELETE',
             $params,
@@ -172,7 +172,7 @@ class AsyncHttpClient
             $cookies
         );
 
-        return $this->processHttpResponse($response);
+        return $this->_processHttpResponse($response);
     }
 
     /**
@@ -182,7 +182,7 @@ class AsyncHttpClient
      * @param \GuzzleHttp\Client
      * @param null|mixed $httpClient
      */
-    private function setHttpClient($httpClient = null)
+    private function _setHttpClient($httpClient = null)
     {
         $this->httpClient = $httpClient ?: new HttpClient();
     }
@@ -192,33 +192,33 @@ class AsyncHttpClient
      *
      * @param string $responseType one of json, html, extjs, text, png
      */
-    private function setResponseType($responseType = 'array')
+    private function _setResponseType($responseType = 'array')
     {
         $supportedFormats = ['json', 'html', 'extjs', 'text', 'png'];
 
         if (in_array($responseType, $supportedFormats)) {
-            $this->fakeType = false;
-            $this->responseType = $responseType;
+            $this->_fakeType = false;
+            $this->_responseType = $responseType;
         } else {
             switch ($responseType) {
-                case 'pngb64':
-                    $this->fakeType = 'pngb64';
-                    $this->responseType = 'png';
+            case 'pngb64':
+                $this->_fakeType = 'pngb64';
+                $this->_responseType = 'png';
 
-                    break;
+                break;
 
-                case 'object':
-                case 'array':
-                    $this->responseType = 'json';
-                    $this->fakeType = $responseType;
+            case 'object':
+            case 'array':
+                $this->_responseType = 'json';
+                $this->_fakeType = $responseType;
 
-                    break;
+                break;
 
-                default:
-                    $this->responseType = 'json';
-                    $this->fakeType = 'array'; // Default format
+            default:
+                $this->_responseType = 'json';
+                $this->_fakeType = 'array'; // Default format
 
-                    break;
+                break;
             }
         }
     }
@@ -226,34 +226,34 @@ class AsyncHttpClient
     /**
      * Parses the response to the desired return type.
      *
-     * @param string $response response sent
+     * @param object $response response sent
      *
      * @return mixed the parsed response, depending on the response type can be
      *               an array or a string
      */
-    private function processHttpResponse($response)
+    private function _processHttpResponse($response)
     {
-        switch ($this->fakeType) {
-            case 'pngb64':
-                $base64 = base64_encode($response->getBody());
+        switch ($this->_fakeType) {
+        case 'pngb64':
+            $base64 = base64_encode($response->getBody());
 
-                return 'data:image/png;base64,'.$base64;
+            return 'data:image/png;base64,'.$base64;
 
-                break;
+            break;
 
-            case 'object': // 'object' not supported yet, we return array instead.
-            case 'array':
-                // return $response->json();
-                $response = json_decode($response->getBody()->getContents(), true);
+        case 'object': // 'object' not supported yet, we return array instead.
+        case 'array':
+            // return $response->json();
+            $response = json_decode($response->getBody()->getContents(), true);
 
-                return json_encode($response);
+            return json_encode($response);
 
-                break;
+            break;
 
-            default:
-                $response = json_decode($response->getBody()->__toString(), true);
+        default:
+            $response = json_decode($response->getBody()->__toString(), true);
 
-                return json_encode($response);
+            return json_encode($response);
         }
     }
 
@@ -271,7 +271,7 @@ class AsyncHttpClient
      *
      * @return \Guzzle\Http\Message\Response
      */
-    private function requestResource(
+    private function _requestResource(
         $actionPath,
         $method = 'GET',
         $params = [],
@@ -281,66 +281,66 @@ class AsyncHttpClient
         $url = $actionPath;
 
         switch ($method) {
-            case 'GET':
-                return $this->httpClient->get(
-                    $url,
-                    [
-                        'verify' => false,
-                        'exceptions' => false,
-                        'query' => $params,
-                        'headers' => $headers,
-                        'cookies' => $cookies,
-                    ]
-                );
+        case 'GET':
+            return $this->httpClient->get(
+                $url,
+                [
+                    'verify' => false,
+                    'exceptions' => false,
+                    'query' => $params,
+                    'headers' => $headers,
+                    'cookies' => $cookies,
+                ]
+            );
 
-                break;
+            break;
 
-            case 'POST':
-                return $this->httpClient->post(
-                    $url,
-                    [
-                        'verify' => false,
-                        'exceptions' => false,
-                        'form_params' => $params,
-                        'headers' => $headers,
-                        'cookies' => $cookies,
-                    ]
-                );
+        case 'POST':
+            return $this->httpClient->post(
+                $url,
+                [
+                    'verify' => false,
+                    'exceptions' => false,
+                    'form_params' => $params,
+                    'headers' => $headers,
+                    'cookies' => $cookies,
+                ]
+            );
 
-                break;
+            break;
 
-            case 'PUT':
-                return $this->httpClient->put(
-                    $url,
-                    [
-                        'verify' => false,
-                        'exceptions' => false,
-                        'form_params' => $params,
-                        'headers' => $headers,
-                        'cookies' => $cookies,
-                    ]
-                );
+        case 'PUT':
+            return $this->httpClient->put(
+                $url,
+                [
+                    'verify' => false,
+                    'exceptions' => false,
+                    'form_params' => $params,
+                    'headers' => $headers,
+                    'cookies' => $cookies,
+                ]
+            );
 
-                break;
+            break;
 
-            case 'DELETE':
-                return $this->httpClient->delete(
-                    $url,
-                    [
-                        'verify' => false,
-                        'exceptions' => false,
-                        'form_params' => $params,
-                        'headers' => $headers,
-                        'cookies' => $cookies,
-                    ]
-                );
+        case 'DELETE':
+            return $this->httpClient->delete(
+                $url,
+                [
+                    'verify' => false,
+                    'exceptions' => false,
+                    'form_params' => $params,
+                    'headers' => $headers,
+                    'cookies' => $cookies,
+                ]
+            );
 
-                break;
+            break;
 
-            default:
-                $errorMessage = "HTTP Request method {$method} not allowed.";
+        default:
+            $errorMessage = "HTTP Request method {$method} not allowed.";
 
-                throw new \InvalidArgumentException($errorMessage);
+            throw new \InvalidArgumentException($errorMessage);
         }
     }
 }
