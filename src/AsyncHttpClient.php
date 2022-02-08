@@ -1,6 +1,6 @@
 <?php
 
-namespace Xiscodev\Racl\Http;
+namespace Xiscodev\Racl;
 
 use GuzzleHttp\Client as HttpClient;
 
