@@ -49,23 +49,14 @@ class RaclServiceProvider extends ServiceProvider
         });
     }
 
+
     /**
-     * Register any application services.
+     * Register bindings in the container.
      *
      * @return void
      */
     public function register()
     {
         $this->registerClasses($this->classes);
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return array_values($this->classes);
     }
 }
