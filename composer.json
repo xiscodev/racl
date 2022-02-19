@@ -40,7 +40,7 @@
             "Xiscodev\\Racl\\Tests\\": "tests"
         }
     },
-  "extra": {
+    "extra": {
       "laravel": {
           "providers": [
               "Xiscodev\\Racl\\RaclServiceProvider"
