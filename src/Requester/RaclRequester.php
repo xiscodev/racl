@@ -7,7 +7,7 @@ use Xiscodev\Racl\Http\AsyncHttpClient;
 /**
  * Allows to perform rest http requests.
  */
-trait RaclRequester
+class RaclRequester
 {
     /**
      * Send a request to any service.

@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 /**
  * Allows to manage http responses for rest.
  */
-trait RaclResponser
+class RaclResponser
 {
     /**
      * Build a success response.

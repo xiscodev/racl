@@ -22,7 +22,9 @@
     "require": {
         "php": "^7.4|^8.0",
         "guzzlehttp/guzzle": "^7.3",
-        "illuminate/http": "^v6.20.0"
+        "illuminate/support": "^v6.20.0",
+        "illuminate/http": "^v6.20.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "orchestra/testbench": "^4.0",
