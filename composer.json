@@ -40,6 +40,13 @@
             "Xiscodev\\Racl\\Tests\\": "tests"
         }
     },
+  "extra": {
+      "laravel": {
+          "providers": [
+              "Xiscodev\\Racl\\RaclServiceProvider"
+          ]
+      }
+    },
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
