@@ -31,18 +31,18 @@ class RaclServiceProvider extends ServiceProvider
             call_user_func_array([$this, $method], []);
         }
 
-        $this->classes(array_values($classes));
+        // $this->classes(array_values($classes));
     }
 
 
-    public function registerRaclResponserClass()
+    protected function registerRaclResponserClass()
     {
         $this->app->singleton($this->classes['RaclResponser'], function () {
             return new RaclResponser();
         });
     }
 
-    public function registerRaclRequesterClass()
+    protected function registerRaclRequesterClass()
     {
         $this->app->singleton($this->classes['RaclRequester'], function () {
             return new RaclRequester();
