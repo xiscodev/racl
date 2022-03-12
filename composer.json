@@ -22,13 +22,14 @@
     "require": {
         "php": "^7.4|^8.0",
         "guzzlehttp/guzzle": "^7.3",
-        "illuminate/support": "^v6.20.0",
-        "illuminate/http": "^v6.20.0",
+        "illuminate/support": "^8.0",
+        "illuminate/http": "^8.0",
         "ext-json": "*"
     },
     "require-dev": {
-        "orchestra/testbench": "^4.0",
-        "phpunit/phpunit": "^8.0"
+        "friendsofphp/php-cs-fixer": "^3.7",
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.3"
     },
     "autoload": {
         "psr-4": {
@@ -41,11 +42,11 @@
         }
     },
     "extra": {
-      "laravel": {
-          "providers": [
-              "Xiscodev\\Racl\\RaclServiceProvider"
-          ]
-      }
+        "laravel": {
+            "providers": [
+                "Xiscodev\\Racl\\RaclServiceProvider"
+            ]
+        }
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
